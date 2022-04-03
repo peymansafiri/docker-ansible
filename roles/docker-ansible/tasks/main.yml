@@ -8,33 +8,37 @@
    
 - name: check docker installation
   meta: end_host
-  when: result.rc == 0 and not force
+  when: (result.rc == 0) and (force == 'false') 
 
 - name: update apt cache and upgrade system
   apt:
     update_cache: yes
     upgrade: yes
-  when: result.rc == 1 or force
+  when: (result.rc == 1) or (force == 'true')
        
 - name: install required packages
   apt:
     name: "{{ docker_required_packages }}"
-    state: present
-  when: result.rc == 1 or force 
+    state: present 
+  when: (result.rc == 1) or (force == 'true')
+
 
 - name: adding docker repository key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
-  when: result.rc == 1 or force 
+  when: (result.rc == 1) or (force == 'true')
+ 
 
 - name: adding docker package repository
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_facts.lsb.codename }} stable
-  when: result.rc == 1 or force 
+  when: (result.rc == 1) or (force == 'true')
+ 
 
 - name: install docker
   apt: 
     name: "{{ docker_new_packages }}"
     state: present      
-  when: result.rc == 1 or force 
+  when: (result.rc == 1) or (force == 'true')
+
