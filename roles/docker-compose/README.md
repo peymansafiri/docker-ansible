@@ -1,17 +1,8 @@
-Docker-Ansible
+Role Name
 =========
-this ansible role install docker automaticallyansible==5.5.0
-ansible-core==2.12.3
-cffi==1.15.0
-cryptography==36.0.2
-Jinja2==3.0.3
-MarkupSafe==2.1.1
-packaging==21.3
-pkg_resources==0.0.0
-pycparser==2.21
-pyparsing==3.0.7
-PyYAML==6.0
-resolvelib==0.5.4 
+
+A brief description of the role goes here.
+
 Requirements
 ------------
 
